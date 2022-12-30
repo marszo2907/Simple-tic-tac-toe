@@ -74,6 +74,13 @@ public class TicTacToeModel {
     public char getField(int x, int y) throws ArrayIndexOutOfBoundsException {
         return _gameGrid[x][y];
     }
+    public char getCurrentPlayer() {
+        if (_isXPlaying) {
+            return 'X';
+        }
+
+        return 'O';
+    }
 
     private boolean _isXPlaying;
     private char[][] _gameGrid;
