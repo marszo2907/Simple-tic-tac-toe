@@ -2,5 +2,8 @@
 .idea
 /TicTacToe/TicTacToe.iml
 
+# Output files
+/out
+
 # macOS files
 .DS_STORE
