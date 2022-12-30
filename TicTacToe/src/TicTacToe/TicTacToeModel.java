@@ -11,9 +11,52 @@ public class TicTacToeModel {
     }
 
     public GameStatus getGameStatus() {
-        GameStatus gameStatus = GameStatus.DRAW;
-        // TODO
-        return gameStatus;
+        boolean isXWinner = false;
+        boolean isOWinner = false;
+
+        GameStatus acrossStatus = checkAcross();
+        switch (acrossStatus) {
+            case X_WINS:
+                isXWinner = true;
+                break;
+            case O_WINS:
+                isOWinner = true;
+                break;
+        }
+
+        if (!isXWinner && !isOWinner) {
+            GameStatus alongStatus = checkAlong();
+            switch (alongStatus) {
+                case X_WINS:
+                    isXWinner = true;
+                    break;
+                case O_WINS:
+                    isOWinner = true;
+                    break;
+            }
+
+            if (!isXWinner && !isOWinner) {
+                GameStatus diagonalStatus = checkDiagonally();
+                switch (diagonalStatus) {
+                    case X_WINS:
+                        isXWinner = true;
+                        break;
+                    case O_WINS:
+                        isOWinner = true;
+                        break;
+                }
+            }
+        }
+
+        if (isXWinner) {
+            return GameStatus.X_WINS;
+        } else if (isOWinner) {
+            return GameStatus.O_WINS;
+        } else if (areEmptySpaces()) {
+            return GameStatus.IN_PROGRESS;
+        } else {
+            return GameStatus.DRAW;
+        }
     }
     public void setField(int x, int y) throws ArrayIndexOutOfBoundsException, IllegalArgumentException {
         // TODO
@@ -40,4 +83,16 @@ public class TicTacToeModel {
         // TODO
         return gameStatus;
     }
+    private boolean areEmptySpaces() {
+        for (var row : _gameGrid) {
+            for (var col : row) {
+                if ('_' == col) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
 }
