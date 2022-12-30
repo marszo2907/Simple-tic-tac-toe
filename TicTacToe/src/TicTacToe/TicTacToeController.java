@@ -20,11 +20,11 @@ public class TicTacToeController {
 
             _model.setField(x, y);
         } catch (NumberFormatException err) {
-            System.err.println(err.getMessage());
+            System.out.println(err.getMessage());
         } catch (ArrayIndexOutOfBoundsException err) {
-            System.err.println(err.getMessage());
+            System.out.println(err.getMessage());
         } catch (IllegalArgumentException err) {
-            System.err.println("Field is already taken");
+            System.out.println("Field already taken");
         }
     }
     public boolean isGameOver() {
