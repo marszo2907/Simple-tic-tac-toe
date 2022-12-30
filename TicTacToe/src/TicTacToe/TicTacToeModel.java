@@ -97,9 +97,34 @@ public class TicTacToeModel {
         return GameStatus.IN_PROGRESS;
     }
     private GameStatus checkAlong() {
-        GameStatus gameStatus = GameStatus.DRAW;
-        // TODO
-        return gameStatus;
+        final int ROWS_AND_COLS_COUNT = 3;
+
+        int xInRow = 0;
+        int oInRow = 0;
+
+        for (int j = 0; ROWS_AND_COLS_COUNT > j; ++j) {
+            for (int i = 0; ROWS_AND_COLS_COUNT > i; ++i) {
+                switch (_gameGrid[i][j]) {
+                    case 'X':
+                        xInRow++;
+                        break;
+                    case 'O':
+                        oInRow++;
+                        break;
+                }
+            }
+
+            if (3 == xInRow) {
+                return GameStatus.X_WINS;
+            } else if (3 == oInRow) {
+                return GameStatus.O_WINS;
+            }
+
+            xInRow = 0;
+            oInRow = 0;
+        }
+
+        return GameStatus.IN_PROGRESS;
     }
     private GameStatus checkDiagonally() {
         GameStatus gameStatus = GameStatus.DRAW;
