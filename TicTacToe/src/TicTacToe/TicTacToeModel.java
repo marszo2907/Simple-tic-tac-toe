@@ -19,7 +19,7 @@ public class TicTacToeModel {
         // TODO
     }
     public char getField(int x, int y) throws ArrayIndexOutOfBoundsException {
-        return _gameGrid[x - 1][y - 1];
+        return _gameGrid[x][y];
     }
 
     private boolean _isXPlaying;
