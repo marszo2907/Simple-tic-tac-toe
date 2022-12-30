@@ -69,9 +69,32 @@ public class TicTacToeModel {
     private char[][] _gameGrid;
 
     private GameStatus checkAcross() {
-        GameStatus gameStatus = GameStatus.DRAW;
-        // TODO
-        return gameStatus;
+        int xInRow = 0;
+        int oInRow = 0;
+
+        for (var row : _gameGrid) {
+            for (var col : row) {
+                switch (col) {
+                    case 'X':
+                        xInRow++;
+                        break;
+                    case 'O':
+                        oInRow++;
+                        break;
+                }
+            }
+
+            if (3 == xInRow) {
+                return GameStatus.X_WINS;
+            } else if (3 == oInRow) {
+                return GameStatus.O_WINS;
+            }
+
+            xInRow = 0;
+            oInRow = 0;
+        }
+
+        return GameStatus.IN_PROGRESS;
     }
     private GameStatus checkAlong() {
         GameStatus gameStatus = GameStatus.DRAW;
