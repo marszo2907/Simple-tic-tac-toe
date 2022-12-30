@@ -127,9 +127,49 @@ public class TicTacToeModel {
         return GameStatus.IN_PROGRESS;
     }
     private GameStatus checkDiagonally() {
-        GameStatus gameStatus = GameStatus.DRAW;
-        // TODO
-        return gameStatus;
+        final int ROWS_AND_COLS_COUNT = 3;
+
+        int xInRow = 0;
+        int oInRow = 0;
+
+        for (int i = 0; ROWS_AND_COLS_COUNT > i; ++i) {
+            switch (_gameGrid[i][i]) {
+                case 'X':
+                    xInRow++;
+                    break;
+                case 'O':
+                    oInRow++;
+                    break;
+            }
+        }
+
+        if (3 == xInRow) {
+            return GameStatus.X_WINS;
+        } else if (3 == oInRow) {
+            return GameStatus.O_WINS;
+        }
+
+        xInRow = 0;
+        oInRow = 0;
+
+        for (int i = 0; ROWS_AND_COLS_COUNT > i; ++i) {
+            switch (_gameGrid[i][2 - i]) {
+                case 'X':
+                    xInRow++;
+                    break;
+                case 'O':
+                    oInRow++;
+                    break;
+            }
+        }
+
+        if (3 == xInRow) {
+            return GameStatus.X_WINS;
+        } else if (3 == oInRow) {
+            return GameStatus.O_WINS;
+        }
+
+        return GameStatus.IN_PROGRESS;
     }
     private boolean areEmptySpaces() {
         for (var row : _gameGrid) {
