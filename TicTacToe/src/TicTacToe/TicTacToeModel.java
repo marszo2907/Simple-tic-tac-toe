@@ -59,7 +59,17 @@ public class TicTacToeModel {
         }
     }
     public void setField(int x, int y) throws ArrayIndexOutOfBoundsException, IllegalArgumentException {
-        // TODO
+        if ('_' != _gameGrid[x][y]) {
+            throw new IllegalArgumentException();
+        }
+
+        if (_isXPlaying) {
+            _gameGrid[x][y] = 'X';
+        } else {
+            _gameGrid[x][y] = 'O';
+        }
+
+        _isXPlaying = !_isXPlaying;
     }
     public char getField(int x, int y) throws ArrayIndexOutOfBoundsException {
         return _gameGrid[x][y];
