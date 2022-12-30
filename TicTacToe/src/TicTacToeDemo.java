@@ -4,6 +4,11 @@ public class TicTacToeDemo {
     public static void main(String[] args) {
         TicTacToeController ticTacToeController = new TicTacToeController();
 
-        ticTacToeController.printGameGrid();
+        while(!ticTacToeController.isGameOver()) {
+            ticTacToeController.printGameGrid();
+            ticTacToeController.processUserInput();
+        }
+
+        ticTacToeController.printResult();
     }
 }

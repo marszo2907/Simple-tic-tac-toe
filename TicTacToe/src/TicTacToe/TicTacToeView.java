@@ -20,7 +20,7 @@ public class TicTacToeView {
                     char tempField = gameModel.getField(i, j);
                     gameGrid.append("[ %c ] ".formatted(tempField));
                 } catch (ArrayIndexOutOfBoundsException err) {
-                    System.err.println(err.getMessage());
+                    System.out.println(err.getMessage());
                     gameGrid.append("[ E ] ");
                 }
             }
