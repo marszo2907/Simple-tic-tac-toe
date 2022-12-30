@@ -1,1 +1,1 @@
-# BasicTicTacToe
+# Simple tic-tac-toe
