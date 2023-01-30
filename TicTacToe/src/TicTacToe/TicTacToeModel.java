@@ -58,6 +58,7 @@ public class TicTacToeModel {
             return GameStatus.DRAW;
         }
     }
+
     public void setField(int x, int y) throws ArrayIndexOutOfBoundsException, IllegalArgumentException {
         if ('_' != _gameGrid[x - 1][y - 1]) {
             throw new IllegalArgumentException();
@@ -71,9 +72,11 @@ public class TicTacToeModel {
 
         _isXPlaying = !_isXPlaying;
     }
+
     public char getField(int x, int y) throws ArrayIndexOutOfBoundsException {
         return _gameGrid[x][y];
     }
+
     public char getCurrentPlayer() {
         if (_isXPlaying) {
             return 'X';
@@ -113,6 +116,7 @@ public class TicTacToeModel {
 
         return GameStatus.IN_PROGRESS;
     }
+
     private GameStatus checkAlong() {
         final int ROWS_AND_COLS_COUNT = 3;
 
@@ -188,6 +192,7 @@ public class TicTacToeModel {
 
         return GameStatus.IN_PROGRESS;
     }
+
     private boolean areEmptySpaces() {
         for (var row : _gameGrid) {
             for (var col : row) {
@@ -199,5 +204,4 @@ public class TicTacToeModel {
 
         return false;
     }
-
 }

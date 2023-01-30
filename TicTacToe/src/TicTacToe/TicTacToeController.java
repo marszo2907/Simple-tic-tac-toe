@@ -10,6 +10,7 @@ public class TicTacToeController {
     public void printGameGrid() {
         TicTacToeView.getInstance().printGameGrid(_model);
     }
+
     public void processUserInput() {
         Scanner scanner = new Scanner(System.in);
         System.out.print(_model.getCurrentPlayer() + "'s turn: ");
@@ -19,14 +20,13 @@ public class TicTacToeController {
             int y = Integer.parseInt(scanner.next());
 
             _model.setField(x, y);
-        } catch (NumberFormatException err) {
-            System.out.println(err.getMessage());
-        } catch (ArrayIndexOutOfBoundsException err) {
+        } catch (NumberFormatException | ArrayIndexOutOfBoundsException err) {
             System.out.println(err.getMessage());
         } catch (IllegalArgumentException err) {
             System.out.println("Field already taken");
         }
     }
+
     public boolean isGameOver() {
         if (GameStatus.IN_PROGRESS == _model.getGameStatus()) {
             return false;
@@ -34,6 +34,7 @@ public class TicTacToeController {
 
         return true;
     }
+
     public void printResult() {
         switch(_model.getGameStatus()) {
             case DRAW:
@@ -47,5 +48,6 @@ public class TicTacToeController {
                 break;
         }
     }
+
     private TicTacToeModel _model;
 }
